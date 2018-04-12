@@ -9,22 +9,27 @@ import { GeolocationPage} from "../pages/geolocalisation/geolocation";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import {UsersPage} from "../pages/users/users";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    GeolocationPage
+    GeolocationPage,
+    UsersPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    GeolocationPage
+    GeolocationPage,
+    UsersPage
   ],
   providers: [
     StatusBar,
