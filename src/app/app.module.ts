@@ -9,9 +9,11 @@ import { GeolocationPage} from "../pages/geolocalisation/geolocation";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import {UsersPage} from "../pages/users/users";
-import {HttpClientModule} from "@angular/common/http";
-import {UserService} from "../services/user.service";
+import {UsersPage} from '../pages/users/users';
+import {HttpClientModule} from '@angular/common/http';
+import {UserService} from '../services/user.service';
+import {AuthService} from '../services/auth.service';
+import {LoginService} from '../services/login.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import {UserService} from "../services/user.service";
     Geolocation,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UserService
+    UserService,
+    AuthService,
+    LoginService
   ]
 })
 export class AppModule {}
