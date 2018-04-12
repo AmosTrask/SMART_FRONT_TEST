@@ -14,5 +14,38 @@
 
 
 <ion-content padding>
-
+  <ion-content>
+    <ion-list>
+      <ion-row>
+        <ion-col>
+          <h2>Username</h2>
+        </ion-col>
+        <ion-col>
+          <h2>First name</h2>
+        </ion-col>
+        <ion-col>
+          <h2>Last name</h2>
+        </ion-col>
+        <ion-col>
+          <h2>Email</h2>
+        </ion-col>
+      </ion-row>
+      <button  ion-item *ngFor="let u of users">
+        <ion-row>
+          <ion-col>
+            {{u.username}}
+          </ion-col>
+          <ion-col>
+           {{u.firstname}}
+          </ion-col>
+          <ion-col>
+           {{u.lastname}}
+          </ion-col>
+          <ion-col>
+            {{u.email}}
+          </ion-col>
+        </ion-row>
+      </button>
+    </ion-list>
+  </ion-content>
 </ion-content>

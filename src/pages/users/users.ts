@@ -1,14 +1,9 @@
 import { Component } from '@angular/core';
 import {  NavController, NavParams } from 'ionic-angular';
 import { HttpClient} from '@angular/common/http';
+import { User } from '../../Entity/user';
+import { UserService } from '../../services/user.service';
 
-
-/**
- * Generated class for the UsersPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @Component({
   selector: 'page-users',
@@ -16,21 +11,17 @@ import { HttpClient} from '@angular/common/http';
 })
 export class UsersPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient) {
-    this.getUserService();
+  users: User [];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient, private userService: UserService) {
+    this.getAllUsers();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UsersPage');
   }
 
-  getUsers(){
-    return this.http.get('http://localhost:8080/user/all');
+  getAllUsers(): void {
+    this.userService.getAllUsers().subscribe(users => this.users = users);
   }
-
-
-  getUserService(): void {
-    this.getUsers().subscribe(data => console.log(data));
-  }
-
 }
