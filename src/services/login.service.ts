@@ -31,13 +31,11 @@ export class LoginService {
   private setSession(authResult) {
     console.log(authResult.token);
     this.authService.setToken(authResult.token);
-    this.authService.setTokenType('Bearer');
     this.authService.setLogged(true);
   }
 
   logout() {
     this.authService.setToken(null);
-    this.authService.setTokenType(null);
     this.authService.setLogged(false);
   }
 
