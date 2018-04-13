@@ -25,19 +25,6 @@ export class AuthService {
     return this.status.isLogged;
   };
 
-  setTokenType(type:string): string{
-    this.status.tokenType = type;
-    localStorage.setItem('tokenType', type);
-    return this.status.tokenType;
-  };
-
-  getTokenType(): string{
-    if (!this.status.tokenType || this.status.tokenType == null) {
-      this.status.tokenType = localStorage.getItem('tokenType');
-    }
-    return this.status.tokenType;
-  };
-
   setToken(token: string): string{
     this.status.accessToken = token;
     localStorage.setItem('token', token);
@@ -50,19 +37,4 @@ export class AuthService {
     }
     return this.status.accessToken;
   };
-
-  getHeaders(): Headers{
-    if(this.isLogged()){
-      return new Headers({
-        'Authorization': this.getTokenType() + " " + this.getToken(),
-        'Content-Type': 'application/json'
-      });
-    }
-    else{
-      return new Headers({
-        'Content-Type': 'application/json'
-      });
-    }
-  }
-
 }
