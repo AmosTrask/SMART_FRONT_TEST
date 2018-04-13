@@ -10,10 +10,11 @@ import { GeolocationPage} from "../pages/geolocalisation/geolocation";
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {UsersPage} from '../pages/users/users';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {UserService} from '../services/user.service';
 import {AuthService} from '../services/auth.service';
 import {LoginService} from '../services/login.service';
+import {AuthInterceptor} from "../services/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -41,7 +42,12 @@ import {LoginService} from '../services/login.service';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserService,
     AuthService,
-    LoginService
+    LoginService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ]
 })
 export class AppModule {}
