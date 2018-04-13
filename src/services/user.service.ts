@@ -21,6 +21,22 @@ export class UserService {
       .pipe(catchError(this.handleError('getAllUsers', [])));
   }
 
+  getUser(): Observable<User[]>{
+    const url = `${API_SERVER.user}`;
+    return this.http.get<User[]>(url)
+      .pipe(catchError(this.handleError('getAllUsers', [])));
+  }
+
+  /**
+   * Get the current user
+   * @returns {Observable<User>}
+   */
+  /*getUser(): Observable<User>{
+    const url = `${API_SERVER.user}`;
+    return this.http.get<User>(url)
+      .pipe(catchError(this.handleError<User>('getUser')));
+  }*/
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.
@@ -30,7 +46,7 @@ export class UserService {
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
-      console.error(error); // log to console for the moment
+      console.error(`${operation} failed: ${error.message}`); // log to console for the moment
 
       // Let the app keep running by returning an empty result.
       return of(result as T);
