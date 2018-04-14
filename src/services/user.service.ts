@@ -3,8 +3,6 @@ import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import {User} from "../entities/user";
 import {API_SERVER} from "../app/app.constants";
-import {of} from 'rxjs/observable/of';
-import {catchError} from "rxjs/operators";
 
 @Injectable()
 export class UserService {
@@ -17,10 +15,8 @@ export class UserService {
    */
   getAllUsers(): Observable<User[]>{
     const url = `${API_SERVER.user}/all`;
-    return this.http.get<User[]>(url)
-      .pipe(catchError(this.handleError('getAllUsers', [])));
+    return this.http.get<User[]>(url);
   }
-
 
   /**
    * Get the current user
@@ -28,23 +24,6 @@ export class UserService {
    */
   getUser(): Observable<User>{
     const url = `${API_SERVER.user}`;
-    return this.http.get<User>(url)
-      .pipe(catchError(this.handleError<User>('getUser')));
-  }
-
-  /**
-   * Handle Http operation that failed.
-   * Let the app continue.
-   * @param operation - name of the operation that failed
-   * @param result - optional value to return as the observable result
-   */
-  private handleError<T> (operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      console.error(`${operation} failed: ${error.message}`); // log to console for the moment
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
+    return this.http.get<User>(url);
   }
 }
