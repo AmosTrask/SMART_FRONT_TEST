@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {  NavController, NavParams } from 'ionic-angular';
-import { User } from '../../Entity/user';
+import { User } from '../../entities/user';
 import { UserService } from '../../services/user.service';
 
 
@@ -12,7 +12,7 @@ export class UsersPage {
 
   users: User [];
 
-  connectedUser: User [];
+  connectedUser: User;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private userService: UserService) {
      this.getAllUsers();
