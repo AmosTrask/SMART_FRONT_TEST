@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import {AlertController} from 'ionic-angular';
+import {AlertController, NavController} from 'ionic-angular';
 import {LoginInfos} from "../../entities/loginInfos";
 import {LoginService} from "../../services/login.service";
 import {User} from "../../entities/user";
 import {UserService} from "../../services/user.service";
 import {AuthService} from "../../services/auth.service";
+import {RegistrationPage} from "../registration/registration";
+
 
 @Component({
   selector: 'page-home',
@@ -29,7 +31,7 @@ export class HomePage {
   logged = false;
 
   constructor(public alertCtrl: AlertController, private loginService: LoginService, private userService: UserService,
-              private authService: AuthService)
+              private authService: AuthService, public navCtlr: NavController)
   { }
 
   ionViewDidLoad () {
@@ -70,5 +72,9 @@ export class HomePage {
           });
           alert.present();
         });
+  }
+
+  createAccount(){
+    this.navCtlr.push(RegistrationPage)
   }
 }

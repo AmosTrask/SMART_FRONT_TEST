@@ -15,13 +15,15 @@ import {UserService} from '../services/user.service';
 import {AuthService} from '../services/auth.service';
 import {LoginService} from '../services/login.service';
 import {AuthInterceptor} from "../services/auth.interceptor";
+import {RegistrationPage} from "../pages/registration/registration";
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     GeolocationPage,
-    UsersPage
+    UsersPage,
+    RegistrationPage
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,8 @@ import {AuthInterceptor} from "../services/auth.interceptor";
     MyApp,
     HomePage,
     GeolocationPage,
-    UsersPage
+    UsersPage,
+    RegistrationPage
   ],
   providers: [
     StatusBar,

@@ -5,8 +5,6 @@ import {LoginInfos} from "../entities/loginInfos";
 import {API_SERVER} from "../app/app.constants";
 import "rxjs/add/operator/do";
 
-
-
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
