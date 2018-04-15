@@ -42,6 +42,15 @@
     </div>
   </ng-template>
   <ng-template #elseBlock>
-    Logged
+    <div>
+      <h3> Logged as {{user.username}} </h3>
+      <p>
+        firstname: {{user.username}}
+        <br>
+        lastname: {{user.lastname}}
+        <br>
+        email: {{user.email}}
+      </p>
+    </div>
   </ng-template>
 </ion-content>

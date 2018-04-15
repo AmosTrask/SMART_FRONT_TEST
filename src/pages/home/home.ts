@@ -18,7 +18,13 @@ export class HomePage {
     password: ""
   };
 
-  user: User;
+  user: User = {
+    username: "",
+    password: "",
+    firstname: "",
+    lastname: "",
+    email: ""
+  };
 
   logged = false;
 
@@ -33,8 +39,8 @@ export class HomePage {
   login() {
     this.loginService.login(this.loginInfos)
       .subscribe(() => {
-        this.getUser();
-        this.logged = this.authService.isLogged();
+          this.getUser();
+          this.logged = this.authService.isLogged();
         },
         (err) => {
       console.error(err);
