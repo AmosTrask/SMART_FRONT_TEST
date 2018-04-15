@@ -9,6 +9,8 @@ import {UserService} from "../../services/user.service";
 })
 export class RegistrationPage {
 
+  passwordVerification;
+
   user: User = {
     username: "",
     password: "",
@@ -23,6 +25,15 @@ export class RegistrationPage {
   ionViewDidLoad() { }
 
   register(){
+    if(this.user.password != this.passwordVerification){
+      let alert = this.alertCtrl.create({
+        title: 'Passwords not identicals',
+        subTitle: '',
+        buttons: ['OK']
+      });
+      alert.present();
+      return;
+    }
     this.userService.addUser(this.user).subscribe((user) => {
       this.user = user;
     },
@@ -30,7 +41,7 @@ export class RegistrationPage {
         console.error(err);
         let alert = this.alertCtrl.create({
           title: 'Registration failed!',
-          subTitle: err.message,
+          subTitle: err.error.message,
           buttons: ['OK']
         });
         alert.present();
