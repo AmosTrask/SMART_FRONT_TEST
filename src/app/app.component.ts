@@ -27,6 +27,8 @@ export class MyApp {
       { title: 'Users', component: UsersPage }
     ];
 
+    localStorage.clear();
+
   }
 
   initializeApp() {
