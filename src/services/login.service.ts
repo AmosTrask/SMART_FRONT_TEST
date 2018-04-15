@@ -30,7 +30,7 @@ export class LoginService {
   }
 
   logout() {
-    this.authService.setToken(null);
+    this.authService.clearToken();
     this.authService.setLogged(false);
   }
 }

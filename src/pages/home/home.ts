@@ -53,6 +53,11 @@ export class HomePage {
     });
   }
 
+  logout() {
+    this.loginService.logout();
+    this.logged = this.authService.isLogged();
+  }
+
   getUser(): void {
     this.userService.getUser()
       .subscribe(user => { this.user = user; },

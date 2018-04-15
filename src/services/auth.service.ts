@@ -31,6 +31,11 @@ export class AuthService {
     return this.status.accessToken;
   };
 
+  clearToken() {
+    localStorage.removeItem('token');
+    this.status.accessToken = null;
+  }
+
   getToken(): string{
     if (!this.status.accessToken || typeof this.status.accessToken == null) {
       this.status.accessToken = localStorage.getItem('token');
